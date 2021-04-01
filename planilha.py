@@ -8,7 +8,7 @@ import pandas as pd
 
 sched = BlockingScheduler()
 
-@sched.scheduled_job('interval',hour=15)
+@sched.scheduled_job('interval',minute=60*24)
 def update():
      
         
