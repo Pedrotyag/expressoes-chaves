@@ -8,7 +8,7 @@ import pandas as pd
 
 sched = BlockingScheduler()
 
-@sched.scheduled_job('interval', minutes=60*24)
+@sched.scheduled_job('interval', seconds = 15)
 def update():
      
         
@@ -17,6 +17,7 @@ def update():
             'https://www.googleapis.com/auth/drive']
 
     creds = ServiceAccountCredentials.from_json_keyfile_name('client_secret.json', scope)
+    print(creds)
     client = gspread.authorize(creds)
 
     # Find a workbook by name and open the first sheet
