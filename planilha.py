@@ -11,6 +11,7 @@ sched = BlockingScheduler()
 @sched.scheduled_job('interval', seconds = 15)
 def update():
      
+    print('funcionando...')
         
     # use creds to create a client to interact with the Google Drive API
     scope = ['https://spreadsheets.google.com/feeds',
@@ -42,6 +43,8 @@ def update():
         cursor = con.cursor()
         cursor.execute("SELECT * FROM expressoeschaves")
         
+        print("ESTE É A TABELA NO BANCO DE DADOS")
+        print("expressoes_chaves --------- variacao")
         for i in cursor.fetchall():
             print(i)
             
@@ -72,11 +75,13 @@ def update():
             con.close()
             cursor.close()
             print("Conexão ao MySQL encerrada")
+
+    print('terminando...')        
     
     
 
 
 if __name__ == '__main__':
-    print('funcionando...')
+    
     sched.start()
 
